@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
@@ -11,7 +12,9 @@ export const TabelaHome = () => {
                         <TabsTrigger value="paraVoce" className="flex-1 text-base">Para você</TabsTrigger>
                         <TabsTrigger value="seguindo" className="flex-1 text-base">Seguindo</TabsTrigger>
                     </TabsList>
-                    <TabsContent value="paraVoce">Para vc</TabsContent>
+                    <TabsContent value="paraVoce" className="flex flex-col">
+                        aaaaa
+                    </TabsContent>
                     <TabsContent value="seguindo">seguindo</TabsContent>
                 </Tabs>
             </div>
