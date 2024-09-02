@@ -1,13 +1,12 @@
 "use client"
 
-import { ThemeToggle } from "@/components/theme-toggle";
-import { Button } from "@/components/ui/button";
+import { TabelaPage } from "@/components/Tabela-Inicial/tabela-page";
+
 
 export const Page = () => {
     return (
-        <div>
-            <Button>Aperte</Button>
-            <ThemeToggle></ThemeToggle>
+        <div className="container mx-auto">
+            <TabelaPage />
         </div>
     );
 }
