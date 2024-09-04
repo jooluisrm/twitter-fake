@@ -1,5 +1,5 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { Bell, CircleEllipsis, Home, Mail, Search, SquareTerminal, UserRound, UsersRound } from "lucide-react";
 import { TabelaHome } from "./Home/Tabela-home";
 
