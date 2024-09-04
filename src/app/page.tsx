@@ -1,7 +1,6 @@
 "use client"
 
-import { TabelaPage } from "@/components/Tabela-Inicial/tabela-page";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from "@/components/ui/button";
 import { Bell, CircleEllipsis, Home, Mail, Search, SquareTerminal, UserRound, UsersRound } from "lucide-react";
 import { TabelaHome } from "@/components/Tabela-Inicial/Home/Tabela-home";
