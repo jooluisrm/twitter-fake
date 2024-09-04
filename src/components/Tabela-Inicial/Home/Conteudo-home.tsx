@@ -29,7 +29,7 @@ export const ConteudoHome = () => {
             </div>
 
             {Posts.map(post => (
-                <PostModelo id={post.id} nome1={post.nome1} nome2={post.nome2} data={post.data} conteudo={post.conteudo} img={post.img} key={post.id} datas={post.datas} />
+                <PostModelo id={post.id} nome1={post.nome1} nome2={post.nome2} data={post.data} conteudo={post.conteudo} img={post.img} key={post.id} datas={post.datas} inicial={post.inicial}/>
             ))}
 
 

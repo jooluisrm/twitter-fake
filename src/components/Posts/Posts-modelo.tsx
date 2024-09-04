@@ -12,6 +12,7 @@ type Props = {
     id: number,
     nome1: string,
     nome2: string,
+    inicial: string,
     data: string,
     conteudo: string,
     img: string,
@@ -24,13 +25,13 @@ type Props = {
     }
 }
 
-export const PostModelo = ({ conteudo, data, id, img, nome1, nome2, datas }: Props) => {
+export const PostModelo = ({ conteudo, data, id, img, nome1, nome2, datas, inicial }: Props) => {
     return (
         <div className="flex gap-3 border border-t-0 border-l-0 border-r-0 py-3 px-3">
             <div className="flex">
                 <Avatar>
                     <AvatarImage src={img} />
-                    <AvatarFallback>JL</AvatarFallback>
+                    <AvatarFallback>{inicial}</AvatarFallback>
                 </Avatar>
 
             </div>
@@ -42,7 +43,7 @@ export const PostModelo = ({ conteudo, data, id, img, nome1, nome2, datas }: Pro
                         <HoverCardContent className="flex items-center gap-2">
                             <Avatar>
                                 <AvatarImage src={img} />
-                                <AvatarFallback>JL</AvatarFallback>
+                                <AvatarFallback>{inicial}</AvatarFallback>
                             </Avatar>
                             <CardDescription>{nome2}</CardDescription>
                         </HoverCardContent>
