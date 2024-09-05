@@ -16,7 +16,21 @@ const STORAGE_KEY = 'postListCache';
 
 export const ConteudoHome = () => {
 
-    const [listaMeusPosts, setListaPosts] = useState<Post[]>(JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]'));
+
+    const [listaMeusPosts, setListaPosts] = useState<Post[]>(() => {
+        if (typeof window !== "undefined") {
+            // Acessa o localStorage apenas se estiver no lado do cliente
+            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+        }
+        return []; // Retorna array vazio no lado do servidor
+    });
+
+    useEffect(() => {
+        if (typeof window !== "undefined") {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(listaMeusPosts));
+        }
+    }, [listaMeusPosts]);
+
     const [listaPosts2, setListaPosts2] = useState<Post[]>([...Posts]);
 
 
@@ -24,9 +38,8 @@ export const ConteudoHome = () => {
     const { toast } = useToast();
     const [carregando, setCarregando] = useState(false);
 
-    useEffect(() => {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(listaMeusPosts));
-    }, [listaMeusPosts]);
+
+
 
     useEffect(() => {
         setCarregando(true);
