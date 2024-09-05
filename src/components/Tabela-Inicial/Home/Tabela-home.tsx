@@ -22,7 +22,7 @@ export const TabelaHome = () => {
                 </Tabs>
             </div>
             {/*Parte de buscar*/}
-            <div className="flex-2 gap-5 flex items-center flex-col w-[450px] pl-5">
+            <div className="flex-2 gap-5 flex items-center flex-col w-96 pl-5 2xl:min-w-[600px]">
                 <div className="flex items-center pt-2">
                     <Search className="translate-x-10"/>
                     <Input className="rounded-full text-lg py-6 pl-14" placeholder="Buscar" />
