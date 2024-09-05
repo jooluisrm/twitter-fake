@@ -82,7 +82,7 @@ export const ConteudoHome = () => {
 
     const AddPostEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
 
-        if (event.key === "Enter") {
+        if (event.key === "Enter" && !carregando) {
             if (novoPost.length === 0) {
                 return toast({
                     title: 'Não foi possivel fazer a publicação!',
@@ -126,9 +126,6 @@ export const ConteudoHome = () => {
             setTimeout(() => setCarregando(false), 1500);
             setNovoPost('');
         }
-
-
-
     }
 
     return (
