@@ -17,7 +17,7 @@ const STORAGE_KEY = 'postListCache';
 export const ConteudoHome = () => {
 
 
-    const [listaMeusPosts, setListaPosts] = useState<Post[]>(() => {
+    const [listaMeusPosts, setListaMeusPosts] = useState<Post[]>(() => {
         if (typeof window !== "undefined") {
             // Acessa o localStorage apenas se estiver no lado do cliente
             return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
@@ -62,11 +62,11 @@ export const ConteudoHome = () => {
             const month = String(date.getMonth() + 1).padStart(2, '0'); // Pega o mês (lembrando que os meses começam do 0)
             const year = date.getFullYear(); // Pega o ano
 
-            return `${year}-${month}-${day}`; // Formata a data no padrão Dia-Mês-Ano
+            return `${year}-${month}-${day}`; // Formata a data no padrão Ano-Mês-Dia
         };
         setCarregando(true);
 
-        setListaPosts([
+        setListaMeusPosts([
             {
                 id: listaMeusPosts.length + 1,
                 nome1: 'João Luis',
@@ -113,7 +113,7 @@ export const ConteudoHome = () => {
             };
             setCarregando(true);
 
-            setListaPosts([
+            setListaMeusPosts([
                 {
                     id: listaMeusPosts.length + 1,
                     nome1: 'João Luis',
