@@ -3,33 +3,28 @@ import { Input } from "@/components/ui/input";
 import { IconeInput } from "./Icones-Input";
 import { Button } from "@/components/ui/button";
 import { PostModelo } from "@/components/Posts/Posts-modelo";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Posts } from "@/data/posts";
 import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { Post } from "@/types/postsType";
+import { ContextPost } from "@/components/Context/ContextPost";
 
 
-const STORAGE_KEY = 'postListCache';
 
+export const STORAGE_KEY = 'postListCache';
 
 
 export const ConteudoHome = () => {
 
 
-    const [listaMeusPosts, setListaMeusPosts] = useState<Post[]>(() => {
-        if (typeof window !== "undefined") {
-            // Acessa o localStorage apenas se estiver no lado do cliente
-            return JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-        }
-        return []; // Retorna array vazio no lado do servidor
-    });
+    const ctx = useContext(ContextPost); // Chamando um context dos meus posts
 
     useEffect(() => {
         if (typeof window !== "undefined") {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(listaMeusPosts));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(ctx?.listaMeusPosts));
         }
-    }, [listaMeusPosts]);
+    }, [ctx?.listaMeusPosts]);
 
     const [listaPosts2, setListaPosts2] = useState<Post[]>([...Posts]);
 
@@ -66,9 +61,9 @@ export const ConteudoHome = () => {
         };
         setCarregando(true);
 
-        setListaMeusPosts([
+        ctx?.setListaMeusPosts([
             {
-                id: listaMeusPosts.length + 1,
+                id: ctx.listaMeusPosts.length + 1,
                 nome1: 'João Luis',
                 nome2: '@jao.luisrm_',
                 inicial: 'JL',
@@ -82,7 +77,7 @@ export const ConteudoHome = () => {
                     viws: 0,
                     compartilhamentos: 0
                 }
-            }, ...listaMeusPosts]);
+            }, ...ctx.listaMeusPosts]);
 
         toast({
             title: 'Post postado com sucesso!',
@@ -113,9 +108,9 @@ export const ConteudoHome = () => {
             };
             setCarregando(true);
 
-            setListaMeusPosts([
+            ctx?.setListaMeusPosts([
                 {
-                    id: listaMeusPosts.length + 1,
+                    id: ctx.listaMeusPosts.length + 1,
                     nome1: 'João Luis',
                     nome2: '@jao.luisrm_',
                     inicial: 'JL',
@@ -129,7 +124,7 @@ export const ConteudoHome = () => {
                         viws: 0,
                         compartilhamentos: 0
                     }
-                }, ...listaMeusPosts]);
+                }, ...ctx.listaMeusPosts]);
 
             toast({
                 title: 'Post postado com sucesso!',
@@ -170,7 +165,7 @@ export const ConteudoHome = () => {
                 </div>
             }
 
-            {!carregando && listaMeusPosts.map(post => (
+            {!carregando && ctx?.listaMeusPosts.map(post => (
                 <PostModelo
                     id={post.id}
                     nome1={post.nome1}
