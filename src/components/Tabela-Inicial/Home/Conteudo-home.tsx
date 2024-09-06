@@ -40,7 +40,7 @@ export const ConteudoHome = () => {
         setCarregando(true);
         setTimeout(() => {
             setCarregando(false);
-        }, 1500)
+        }, 0)
     }, [])
 
     const AddPost = () => {
@@ -84,7 +84,7 @@ export const ConteudoHome = () => {
             action: <ToastAction altText="fechar">Fechar</ToastAction>
         });
 
-        setTimeout(() => setCarregando(false), 1500);
+        setTimeout(() => setCarregando(false), 0);
         setNovoPost('');
     }
 
@@ -131,7 +131,7 @@ export const ConteudoHome = () => {
                 action: <ToastAction altText="fechar">Fechar</ToastAction>
             });
 
-            setTimeout(() => setCarregando(false), 1500);
+            setTimeout(() => setCarregando(false), 0);
             setNovoPost('');
         }
     }
@@ -167,28 +167,14 @@ export const ConteudoHome = () => {
 
             {!carregando && ctx?.listaMeusPosts.map(post => (
                 <PostModelo
-                    id={post.id}
-                    nome1={post.nome1}
-                    nome2={post.nome2}
-                    data={post.data}
-                    conteudo={post.conteudo}
-                    img={post.img}
                     key={post.id}
-                    datas={post.datas}
-                    inicial={post.inicial}
+                    item={post}
                 />
             ))}
             {!carregando && listaPosts2.map(post => (
-                <PostModelo
-                    id={post.id}
-                    nome1={post.nome1}
-                    nome2={post.nome2}
-                    data={post.data}
-                    conteudo={post.conteudo}
-                    img={post.img}
+                <PostModelo 
                     key={post.id}
-                    datas={post.datas}
-                    inicial={post.inicial}
+                    item={post}
                 />
             ))}
 
