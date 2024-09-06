@@ -86,8 +86,11 @@ export const PostModelo = ({ item }: PropsItem) => {
             // Atualiza a lista de posts com o conteúdo editado
             const postsAtualizados: any = ctx?.listaMeusPosts.map(post => post.id === id ? { ...post, conteudo: novoConteudo } : post);
             // Atualiza o estado com a nova lista de posts
+            setEditar(true);
             ctx?.setListaMeusPosts(postsAtualizados);
+            
         }
+        
     };
 
 
@@ -120,8 +123,10 @@ export const PostModelo = ({ item }: PropsItem) => {
                         <CardDescription>{item.nome2}</CardDescription>
 
                         <CardDescription>{item.data}</CardDescription>
+                        <CardDescription>{editar && "post editado"}</CardDescription>
                     </div>
-                    <div className="cursor-pointer">
+
+                    <div className="cursor-pointer"> {/*Div para editar/deletar posts*/ }
                         {item.nome2 === "@jao.luisrm_" &&
                             <DropdownMenu>
                                 <DropdownMenuTrigger><CardDescription><Ellipsis /></CardDescription></DropdownMenuTrigger>

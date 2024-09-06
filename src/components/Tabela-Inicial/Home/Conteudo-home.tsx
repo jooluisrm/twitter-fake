@@ -43,7 +43,22 @@ export const ConteudoHome = () => {
         }, 0)
     }, [])
 
+    const verificarEntrada = (input: string) => {
+        const inputTrim = input.trim();
+
+        if (inputTrim === '') {
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+
     const AddPost = () => {
+        if (verificarEntrada(novoPost)) {
+            return true;
+        } 
+
         if (novoPost.length === 0) {
             return toast({
                 title: 'Não foi possivel fazer a publicação!',
@@ -89,6 +104,10 @@ export const ConteudoHome = () => {
     }
 
     const AddPostEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+
+        if (verificarEntrada(novoPost)) {
+            return true;
+        } 
 
         if (event.key === "Enter" && !carregando) {
             if (novoPost.length === 0) {
@@ -155,7 +174,7 @@ export const ConteudoHome = () => {
                 </div>
                 <div className="flex justify-between pt-5">
                     <IconeInput></IconeInput>
-                    <Button disabled={carregando} onClick={AddPost} className="rounded-full font-bold">Postar</Button>
+                    <Button disabled={carregando || verificarEntrada(novoPost)} onClick={AddPost} className="rounded-full font-bold">Postar</Button>
                 </div>
             </div>
             {carregando &&
@@ -172,7 +191,7 @@ export const ConteudoHome = () => {
                 />
             ))}
             {!carregando && listaPosts2.map(post => (
-                <PostModelo 
+                <PostModelo
                     key={post.id}
                     item={post}
                 />
