@@ -9,6 +9,7 @@ import { useToast } from "@/hooks/use-toast";
 import { ToastAction } from "@/components/ui/toast";
 import { Post } from "@/types/postsType";
 import { ContextPost } from "@/components/Context/ContextPost";
+import { SkeletonDemo } from "@/components/Skeleton/Skeleton-home";
 
 
 
@@ -40,7 +41,7 @@ export const ConteudoHome = () => {
         setCarregando(true);
         setTimeout(() => {
             setCarregando(false);
-        }, 0)
+        }, 1500)
     }, [])
 
     const verificarEntrada = (input: string) => {
@@ -57,7 +58,7 @@ export const ConteudoHome = () => {
     const AddPost = () => {
         if (verificarEntrada(novoPost)) {
             return true;
-        } 
+        }
 
         if (novoPost.length === 0) {
             return toast({
@@ -99,7 +100,7 @@ export const ConteudoHome = () => {
             action: <ToastAction altText="fechar">Fechar</ToastAction>
         });
 
-        setTimeout(() => setCarregando(false), 0);
+        setTimeout(() => setCarregando(false), 1500);
         setNovoPost('');
     }
 
@@ -107,7 +108,7 @@ export const ConteudoHome = () => {
 
         if (verificarEntrada(novoPost)) {
             return true;
-        } 
+        }
 
         if (event.key === "Enter" && !carregando) {
             if (novoPost.length === 0) {
@@ -150,12 +151,13 @@ export const ConteudoHome = () => {
                 action: <ToastAction altText="fechar">Fechar</ToastAction>
             });
 
-            setTimeout(() => setCarregando(false), 0);
+            setTimeout(() => setCarregando(false), 1500);
             setNovoPost('');
         }
     }
 
     return (
+
         <div>
 
             <div className="border border-t-0 border-l-0 border-r-0 py-3 px-3">
@@ -178,11 +180,17 @@ export const ConteudoHome = () => {
                 </div>
             </div>
             {carregando &&
-                <div className="flex justify-center py-2">
+                <div className="flex justify-center py-3">
                     <div className="border border-t-0 border-r-0 w-6 h-6 rounded-full border-white border-b-2 border-l-2 animate-spin">
                     </div>
                 </div>
             }
+
+            {carregando && Array(5).fill(0).map((item) => (
+                <SkeletonDemo />
+            ))}
+
+
 
             {!carregando && ctx?.listaMeusPosts.map(post => (
                 <PostModelo
