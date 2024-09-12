@@ -43,6 +43,12 @@ export const ConteudoHome = () => {
             setCarregando(false);
         }, 1500)
     }, [])
+    useEffect(() => {
+        setCarregando(true);
+        setTimeout(() => {
+            setCarregando(false);
+        }, 1500)
+    }, [ctx?.listaMeusPosts])
 
     const verificarEntrada = (input: string) => {
         const inputTrim = input.trim();
@@ -179,6 +185,7 @@ export const ConteudoHome = () => {
                     <Button disabled={carregando || verificarEntrada(novoPost)} onClick={AddPost} className="rounded-full font-bold">Postar</Button>
                 </div>
             </div>
+
             {carregando &&
                 <div className="flex justify-center py-3">
                     <div className="border border-t-0 border-r-0 w-6 h-6 rounded-full border-white border-b-2 border-l-2 animate-spin">
