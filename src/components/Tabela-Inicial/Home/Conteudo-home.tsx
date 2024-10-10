@@ -150,7 +150,8 @@ export const ConteudoHome = () => {
                         viws: 0,
                         compartilhamentos: 0
                     }
-                }, ...ctx.listaMeusPosts]);
+                }, ...ctx.listaMeusPosts
+            ]);
 
             toast({
                 title: 'Post postado com sucesso!',
@@ -163,7 +164,6 @@ export const ConteudoHome = () => {
     }
 
     return (
-
         <div>
 
             <div className="border border-t-0 border-l-0 border-r-0 py-3 px-3">
@@ -186,18 +186,9 @@ export const ConteudoHome = () => {
                 </div>
             </div>
 
-            {carregando &&
-                <div className="flex justify-center py-3">
-                    <div className="border border-t-0 border-r-0 w-6 h-6 rounded-full border-white border-b-2 border-l-2 animate-spin">
-                    </div>
-                </div>
-            }
-
-            {carregando && Array(5).fill(0).map((item) => (
+            {carregando && Array(10).fill(0).map((item) => (
                 <SkeletonDemo />
             ))}
-
-
 
             {!carregando && ctx?.listaMeusPosts.map(post => (
                 <PostModelo
@@ -211,8 +202,6 @@ export const ConteudoHome = () => {
                     item={post}
                 />
             ))}
-
-
 
         </div>
 

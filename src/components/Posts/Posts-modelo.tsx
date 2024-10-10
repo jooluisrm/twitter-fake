@@ -58,7 +58,6 @@ export const PostModelo = ({ item }: PropsItem) => {
     const openDialog = () => setDeletarOpen(true);
     const closeDialog = () => setDeletarOpen(false);
 
-
     const [editar, setEditar] = useState(false);
 
     const deletarPost = (id: number) => {
@@ -88,15 +87,13 @@ export const PostModelo = ({ item }: PropsItem) => {
             // Atualiza o estado com a nova lista de posts
             setEditar(true);
             ctx?.setListaMeusPosts(postsAtualizados);
-            
         }
         
     };
 
-
     return (
 
-        <div className="flex gap-3 border border-t-0 border-l-0 border-r-0 py-3 px-3">
+        <div className="flex gap-3 border border-t-0 border-l-0 border-r-0 py-3 px-3 2xl:w-[680px]">
 
             <div className="flex">
                 <Avatar>
@@ -153,7 +150,7 @@ export const PostModelo = ({ item }: PropsItem) => {
                 </div>
 
 
-                <div className="">
+                <div className="max-w-[520px] 2xl:max-w-[540px] break-words">
                     {item.conteudo}
                 </div>
 
